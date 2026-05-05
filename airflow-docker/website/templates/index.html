@@ -1,0 +1,24 @@
+<!-- You will not be able to see this text on webpage. comments are mentioned here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Rating Lookup</title>
+</head>
+<body>
+    <h1>Movie Rating Lookup</h1>
+    <br>
+    <img src="https://raw.githubusercontent.com/Priyanka-Dandale/Credit-Score-Rating-App/main/credit-score-gauge-img1.jpg" id="image">
+    <form method="POST">
+        <label for="age">Enter your Age:</label>
+        <input type="text" id="age" name="age" required>
+        <br>
+        <label for="sex">Enter your Sex:</label>
+        <input type="text" id="sex" name="sex" required>
+        <button type="submit">Get movie</button>
+    </form>
+    {% if movie_name %}
+        <h2>The recommended movie is: "{{ movie_name }}"</h2>
+    {% endif %}
+</body>
+</html>
