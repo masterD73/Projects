@@ -1,0 +1,26 @@
+services:
+  web:
+    image: weather
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+    #environment:
+    #      - host='db'
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./dbdata:/data/db
+  # filebeat:
+  #   image: elastic/filebeat:7.14.0
+  #   container_name: filebeat
+  #   user: root
+  #   command: ["filebeat", "-e", "--strict.perms=false"]
+  #   volumes:
+  #     - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+  #     - /var/log/syslog:/var/log/syslog:ro
+  #     - /var/log/auth.log:/var/log/auth.log:ro
+
