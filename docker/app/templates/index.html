@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Weather Forecast: Untold story, told.</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color:orange">
+<nav class="row" style="background: #000000; color: orange;">
+    <h3 class="col-md-4 text-center col-md-offset-4">Weather Forecast: Untold story, told.</h3>
+</nav>
+<br/>
+<br/>
+<div class="row text-center">
+    <form method="post" class="col-md-3 col-md-offset-4">
+        <div class="input-group">
+            <input type="text" class="form-control" name="city" placeholder="I choose you!">
+            <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit" style="color:black">
+                    <img src="https://cdn.dribbble.com/users/6245075/screenshots/16269935/media/17cc5ec7251045c325392d0d5ceae910.png"
+                         alt="buttonpng" border="0" width="20" height="20"/>
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+        {% if error %}
+        <div class="text-danger" style="margin-top: 10px;">
+            {{error}}
+        </div>
+        {% endif %}
+    </form>
+</div>
+<div class="row">
+    {% if data %}
+    <div class="col-md-6 col-md-offset-4">
+        <h5>Country: {{location[1]}}</h5>
+        <h5>City: {{location[0]}}</h5>
+        <br>
+        {% for d in data %}
+        <h5>Date: {{d["Date"]}}</h5>
+        <h5>Day: {{d["Day"]}}</h5>
+        {% if d["morning_temp"] %}
+        <h5>Morning Temperature: {{d["morning_temp"]}}</h5>
+        <h5>Morning Humidity: {{d["morning_humid"]}}</h5>
+        {% endif %}
+        {% if d["night_temp"] %}
+        <h5>Night Temperature: {{d["night_temp"]}}</h5>
+        <h5>Night Humidity: {{d["night_humid"]}}</h5>
+        {% endif %}
+        <br>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</body>
+
+</html>

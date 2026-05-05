@@ -1,0 +1,26 @@
+services:
+ web1: 
+   build: 
+     context: . 
+     dockerfile: Dockerfile 
+   environment: 
+     - FLASK_ENV=development 
+   command: flask run --host=0.0.0.0 
+ 
+ web2: 
+   build: 
+     context: . 
+     dockerfile: Dockerfile 
+   environment: 
+     - FLASK_ENV=development 
+   command: flask run --host=0.0.0.0 
+ 
+ nginx: 
+   image: nginx:latest 
+   ports: 
+     - "8080:80" 
+   volumes: 
+     - ./nginx.conf:/etc/nginx/nginx.conf 
+   depends_on: 
+     - web1 
+     - web2

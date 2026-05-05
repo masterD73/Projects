@@ -1,0 +1,22 @@
+services:
+  web:
+    image: app-web2
+    ports:
+      - 5000:5000
+    volumes:
+      - ./webapp:/usr/share/app-web2
+    depends_on:
+      - db
+  db:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=weather
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+    expose:
+      - 3306
+    volumes:
+      - ./dbdata:/var/lib/mysql
+volumes:
+  dbdata:
